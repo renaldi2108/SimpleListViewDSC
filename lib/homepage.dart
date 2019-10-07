@@ -44,11 +44,18 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, position) => GestureDetector(
-              child: createListWidget(context, data[position]),
-          )
+        body: ListView(
+          children: <Widget>[
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0]),
+            createListWidget(context, data[0])
+          ],
         )
     );
 
