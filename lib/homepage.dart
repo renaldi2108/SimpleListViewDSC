@@ -44,22 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: GridView(
+        body: GridView.builder(
+          itemCount: data.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2
           ),
-          children: <Widget>[
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0]),
-            createListWidget(context, data[0])
-          ],
+          itemBuilder: (context, position) => GestureDetector(
+              child: createListWidget(context, data[position]),
+              onTap: (){
+                print(data[position].name);
+              },
+          )
         )
     );
 
