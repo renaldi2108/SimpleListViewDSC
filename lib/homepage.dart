@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/mymodel.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -12,6 +13,28 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  // TODO: global variable
+  List<MyModel> data;
+
+  @override
+  void initState() {
+    // TODO: added list when in initState
+
+    data = [
+      MyModel("renaldi", "depok", "20"),
+      MyModel("renaldi 2", "depok", "20"),
+      MyModel("renaldi 3", "depok", "20"),
+      MyModel("renaldi 4", "depok", "20"),
+      MyModel("renaldi 5", "depok", "20"),
+      MyModel("renaldi 6", "depok", "20"),
+      MyModel("renaldi 7", "depok", "20"),
+      MyModel("renaldi 8", "depok", "20"),
+      MyModel("renaldi 9", "depok", "20"),
+      MyModel("renaldi 10", "depok", "20")
+    ];
+    super.initState();
+  }
+
   /*
   * Widget build
   * @param itemBuilder(BuildContext, int)
@@ -22,14 +45,17 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: ListView.builder(
-          itemCount: 10,
+          itemCount: data.length,
           itemBuilder: (context, position) => GestureDetector(
-              child: createListWidget(),
+              child: createListWidget(context, data[position]),
           )
         )
     );
 
-  Widget createListWidget() => Card(
+  /*
+  * @param createListWidget(BuildContext, MyModel)
+  * */
+  Widget createListWidget(context, MyModel data) => Card(
     child: Container(
       width: MediaQuery.of(context).size.width,
       child: Row(
@@ -42,7 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                child: Text("Hellow renaldi"),
+                child: Text(data.name),
+              ),
+              Container(
+                child: Text(data.address),
+              ),
+              Container(
+                child: Text(data.age),
               )
             ],
           )
