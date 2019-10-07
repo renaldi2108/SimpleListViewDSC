@@ -44,11 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: GridView.builder(
+        body: ListView.builder(
           itemCount: data.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2
-          ),
           itemBuilder: (context, position) => GestureDetector(
               child: createListWidget(context, data[position]),
               onTap: (){
